@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Моя страница{% endblock %}</title>
+    <style>
+        body {
+            background-color: #F2F2F2; /* Приятный цвет фона */
+        }
+        header {
+            background-color: #333; /* Цвет шапки */
+            color: #FFF; /* Цвет текста в шапке */
+            padding: 10px;
+        }
+        h1 {
+            text-align: center; /* Центрирование заголовка */
+        }
+        .top-right-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #f2f2f2;
+            position: absolute;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 5px 10px;
+            margin: 5px;
+            top: 20px;
+            right: 20px;
+        }
+        .top-left-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #f2f2f2;
+            position: absolute;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 5px 10px;
+            margin: 5px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{% block heading %}Заголовок страницы{% endblock %}</h1>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>

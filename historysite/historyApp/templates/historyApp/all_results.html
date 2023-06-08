@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block heading %}Результаты прохождения всех тестов{% endblock %}
+{% block content %}
+<a class="top-right-button" href="/">На главную</a>
+    {% if test_results %}
+        <ul>
+        {% for result in test_results %}
+            <li>{{ result.date }} - {{ result.score }} - {{result.test.name}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет доступных результатов тестов.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load shuffle_filter %}
+{% block title %}Тест 1{% endblock %}
+
+{% block heading %}Тест про Вторую Мировую{% endblock %}
+
+{% block content %}
+    <a class="top-right-button" href="/">На главную</a>
+    <form method="POST">
+        {% csrf_token %}
+        {% for question in questions %}
+            <h3>{{ question.text }}</h3>
+            {% with question.answer_set.all as answers %}
+                {% for answer in answers|shuffle %}
+                    <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.text }}<br>
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

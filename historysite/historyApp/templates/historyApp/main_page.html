@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block heading %}Тесты по истории{% endblock %}
+
+{% block content %}
+    <style>
+    .button-link {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #888;
+        border: 1px solid #ccc;
+        color: #fff;
+        padding: 30px 60px;
+        margin: 100px;
+        font-size: 18px;
+    }
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .header_right {
+        text-align: right;
+        padding: 10px;
+        background-color: #f2f2f2;
+    }
+    .image-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .image-container img {
+        width: 33.33%;
+        height: auto;
+    }
+</style>
+    {% if user.is_authenticated %}
+    Добро пожаловать, {{user.username}}!
+    <div class="top-right-button">
+        <a href="{% url 'logout' %}">Выйти</a>
+    </div>
+    {% else %}
+    <div class="top-right-button">
+         <a href="{% url 'register' %}">Зарегистрироваться</a>
+         <a href="{% url 'login' %}">Войти</a>
+    </div>
+    {% endif %}
+    <div class="button-container">
+        <a class="button-link" href="{% url 'text_1' %}">Вторая Мировая Война</a>
+        <a class="button-link" href="{% url 'text_2' %}">Пётр Первый</a>
+        <a class="button-link" href="{% url 'text_3' %}">Первая Мировая Война</a>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'images/war_2.jpg' %}" alt="war_2">
+        <img src="{% static 'images/petr_1.jpg' %}" alt="petr_1">
+        <img src="{% static 'images/war_1.jpeg' %}" alt="war_1">
+    </div>
+    {% if user.is_authenticated %}
+        <div class="button-container">
+            <a class="button-link" href="{% url 'all_results' %}">Посмотреть результаты</a>
+        </div>
+    {% else %}
+    {% endif %}
+    <div class="top-left-button">
+        <a href="{% url 'about_us' %}">О разработчике</a>
+    </div>
+{% endblock %}

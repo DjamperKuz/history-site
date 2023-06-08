@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% block heading %}Вход{% endblock %}
+{% if error_message %}
+<p>{{ error_message }}</p>
+{% endif %}
+<a class="top-right-button" href="/">На главную</a>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Имя пользователя"><br>
+    <input type="password" name="password" placeholder="Пароль"><br>
+    <button type="submit">Войти</button>
+</form>
+{% endblock content %}

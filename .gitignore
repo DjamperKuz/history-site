@@ -1,0 +1,5 @@
+__pycache__/
+venv
+historysite/historysite/secrets_key.py
+*.sqlite3
+.idea
